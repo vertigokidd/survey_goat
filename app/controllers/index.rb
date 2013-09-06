@@ -11,7 +11,7 @@ get '/create' do
   erb :create
 end
 
-get '/survey/:survey_id'
+get '/survey/:survey_id' do
 
   erb :survey
 end

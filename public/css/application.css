@@ -6,7 +6,6 @@ small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
@@ -28,7 +27,7 @@ body {
   line-height: 1;
 }
 ol, ul {
-  list-style: none;
+  /*list-style: none;*/
 }
 blockquote, q {
   quotes: none;
@@ -37,10 +36,6 @@ blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
 }
 
 .cf:before,
@@ -89,8 +84,14 @@ body{
   /*padding: 0px 20px 20px 20px;*/
   border: 1px dotted black;
 }
+table {
+  border-collapse: separate;
+  border-spacing: 2px;
+  width: 100%;
+}
 th {
   text-align: left;
+  width: 10em;
 }
 nav {
   background-color: gray;
@@ -167,6 +168,121 @@ nav h2 {
 
 .column label input {
   display: block;
+}
+
+.tableWrapper{
+  width: 80%;
+  margin: 0 auto;
+}
+
+#profile{
+  padding: 1em 0;
+  text-align: center;
+}
+
+#createSurvey {
+  text-align: center;
+  display: inline-block;
+  margin: 2% 0 2% 45%;
+  padding: 1em;
+  border: 1px solid black;
+  background-color: beige;
+  text-decoration: none;
+}
+
+.tableWrapper ol  {
+  padding: 1em;
+}
+
+.tableWrapper ol h2 {
+  padding: .5em 0;
+  text-align: left;
+}
+
+.tableWrapper ol p {
+  padding-bottom: .5em;
+}
+
+.tableWrapper div{
+  border: 1px dotted black;
+}
+
+#resultsWrapper h2 {
+  text-align: center;
+}
+
+#resultsWrapper p {
+  text-align: center;
+}
+
+#resultsWrapper li {
+  font-size: 1.5em;
+  padding: .5em 0;
+  /*font-style: italic;*/
+}
+
+#resultsWrapper table tr{
+  height: 2em;
+}
+
+#createWrapper h3 {
+  padding-top: .5em;
+  width: 50%;
+  margin: auto;
+
+  text-align: left;
+}
+
+#createWrapper input, textarea {
+  display: block;
+  margin: 1em 0;
+  font-size: 1.25em;
+}
+
+#createWrapper form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+#createWrapper #create_title {
+  width: 80%;
+  margin-bottom: 1em;
+  font-size: 1.75em;
+}
+
+#createWrapper .question {
+  width: 80%;
+}
+
+#createWrapper .choice {
+  width: 50%;
+}
+
+#createWrapper #questionBox{
+  position: relative;
+}
+
+#createWrapper #questionBox span{
+  position: absolute;
+  font-size: 1.25em;
+  left: -1.25em;
+}
+
+#createWrapper #complete{
+  /*text-align: right;*/
+  float: right;
+  margin-right: 20%;
+  margin-top: 4em;
+}
+
+#createWrapper button{
+  display: block;
+}
+
+#createWrapper #question{
+  margin-top: 2em;
+  padding: .5em;
+  width: 50%;
 }
 
 /*#signup {
