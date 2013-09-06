@@ -22,8 +22,7 @@ end
 
 get '/user/:user_id' do
   user_id = params[:user_id]
-  @surveys = Survey.where("user_id =#{user_id}")
-
+  @surveys = Survey.where("user_id = #{user_id}")
   erb :profile
 end
 
@@ -62,11 +61,27 @@ post '/signup' do
   end
 end
 
+# create new survey
 post '/create' do
+  # create a new survey
+  # for each question
+
+
+
+    # make a new question for the survey
+
+
+
+# SAMPLE PARAMS
+# { "survey" => { title: "Favorite Colors" },
+#   "question_1" => { content: 'Your favorite color?', choice_1: "red", choice_2: "green" },
+#   "question_2" => { content: 'Your favorite kind of music?', choice_1: 'rock', choice_2: 'rap' } }
+
 
   redirect '/'
 end
 
+# submit completed survey
 post '/submit' do
 
  redirect '/'
@@ -75,14 +90,3 @@ end
 
 
 
-
-
-
-# Return the total number of responses to a question
-# @number_of_responses = survey.questions.first.results.count
-
-
-# Return the percentage for a particular answer
-# answer_results = answer.results.count
-# total_results = answer.question.results.count
-# answer_percentage = ((answer_results.to_f / total_results) * 100).round
