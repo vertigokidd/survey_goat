@@ -4,10 +4,14 @@
 
 <div id="signup" class="column">
   <h2>Sign up</h2>
-  <form action="/" method="POST">
+  <form action="/signup" method="POST">
      <label>Email: <input type="text" name="email"></label>
      <label>Password: <input type="password" name="password"></label>
      <label>Confirm password: <input type="password" name="verify_password"></label>
+     <% if @signup_errors %>
+       <p style="color:red;"><%= @signup_errors %></p>
+     <% end %>
+     <br>
      <input type="submit" value="Create account">
   </form>
 </div>

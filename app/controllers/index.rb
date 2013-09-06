@@ -12,13 +12,17 @@ get '/create' do
 end
 
 get '/survey/:survey_id' do
+  survey_id = params[:survey_id]
+  @survey = Survey.find(survey_id)
+  @questions = @survey.questions  
 
   erb :survey
 end
 
 
 get '/user/:user_id' do
-
+  user_id = params[:user_id]
+  @surveys = Survey.where("user_id =#{user_id}")
 
   erb :profile
 end
@@ -47,8 +51,15 @@ post '/login' do
 end
 
 post '/signup' do
-
+  email = params[:email]
+  password = params[:password]
+  if password != params[:verify_password]
+    @signup_errors = "Password does not match, fool."
+    erb :index
+  else
+  User.create({email: email, password: password})
   redirect '/'
+  end
 end
 
 post '/create' do
