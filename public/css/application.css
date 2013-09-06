@@ -43,12 +43,31 @@ table {
   border-spacing: 0;
 }
 
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
 
 
 
 
 
+h1{
+  font-size: 3em;
+}
 
+h2{
+  font-size: 2em;
+}
+
+h3{
+  font-size: 1.5em;
+}
 
 
 
@@ -75,12 +94,8 @@ th {
 }
 nav {
   background-color: gray;
-  /*text-align: center;*/
-  /*top: 0;*/
-  /*position: absolute;*/
-  /*margin: 0 20%;*/
-  width: 100%;
   height: 3em;
+  padding: 0 10%;
 }
 
 nav div{
@@ -113,8 +128,13 @@ nav h2 {
 }
 
 #hero {
+  text-align: center;
   height: 200px;
   background: beige;
+}
+
+#hero h1 {
+
 }
 
 .column{
@@ -129,10 +149,9 @@ nav h2 {
   border-right: 1px dashed black;
 }
 
-.column h3 {
+.column h2 {
   text-align: center;
-  font-size: 1.2em;
-  padding: 1em 0;
+  padding: .5em 0;
 }
 
 .column form{
