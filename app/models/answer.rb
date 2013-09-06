@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
   def find_percentage
     answer_results = results.count
     total_results = question.results.count
-    ((answer_results.to_f / toquesttal_results) * 100).round
+    ((answer_results.to_f / total_results) * 100).round
   end
 
   def find_total

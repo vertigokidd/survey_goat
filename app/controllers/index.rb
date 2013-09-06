@@ -63,14 +63,40 @@ end
 
 # create new survey
 post '/create' do
+  params_hash = params
+  survey_title = params_hash[:survey][:title]
   # create a new survey
+  survey = Survey.create({title: survey_title})
+  params_hash.delete("survey")
   # for each question
-
-
-
+  questions_array = params_hash.map { |kv| kv }
+  
+  p questions_array
     # make a new question for the survey
+  questions_array.each do |question|
+
+    question_info = question[1]
+    content =  question_info["content"]
+    new_question = survey.questions.create(content: content)
+    question_info.delete("content")
+    choices_array = question_info.map { |k,v| v }
+    p choices_array
+
+    choices_array.each do |choice|
+      new_question.answers.create(choice: choice)
+    end
+
+  end
 
 
+# 1.9.3-p374 :005 > question_hash =_
+#  => {"content"=>"Which one?", "choice_1"=>"Labrador", "choice_2"=>"Doberman"}
+# 1.9.3-p374 :016 > question_hash.delete("content")
+#  => "Which one?"
+# 1.9.3-p374 :018 > question_hash
+#  => {"choice_1"=>"Labrador", "choice_2"=>"Doberman"}
+# 1.9.3-p374 :019 > question_hash.map { |k, v| v }
+#  => ["Labrador", "Doberman"]
 
 # SAMPLE PARAMS
 # { "survey" => { title: "Favorite Colors" },
