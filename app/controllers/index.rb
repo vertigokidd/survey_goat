@@ -11,7 +11,7 @@ get '/create' do
   erb :create
 end
 
-get '/survey/:survey_id'
+get '/survey/:survey_id' do
 
   erb :survey
 end
@@ -35,8 +35,15 @@ end
 # POST ====================================
 
 post '/login' do
-
-  redirect '/user/1'
+  email = params[:email]
+  password = params[:password]
+  user = User.find_by_email(email)
+  if user.password == password
+    redirect '/user/1'
+  else
+    @errors = "Username and password do not match."
+    erb :index
+  end
 end
 
 post '/signup' do

@@ -14,9 +14,13 @@
 
 <div id="login" class="column">
   <h2>Log in</h2>
-    <form action="/" method="POST">
+    <form action="/login" method="POST">
      <label>Email: <input type="text" name="email"></input></label>
      <label>Password: <input type="password" name="password"></label>
+     <% if @errors %>
+       <p style="color:red;"><%= @errors %></p>
+     <% end %>
+     <br>
      <input type="submit" value="Log in">
   </form>
 </div>
