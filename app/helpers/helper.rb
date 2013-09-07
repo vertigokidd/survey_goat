@@ -11,4 +11,10 @@ helpers do
   def logged_in?
     !current_user.nil?
   end
+
+  def make_url
+    url = ("A".."Z").to_a + ("a".."z").to_a + ("1".."9").to_a
+    url.sample(5).join
+  end
+
 end
