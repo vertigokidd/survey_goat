@@ -5,7 +5,7 @@ user = User.create(email: "a@b.com",
             password: "1234")
 
 
-user.surveys.create({title: "Up or Down"})
+user.surveys.create({title: "Up or Down", url: 'aaaaa'})
 
 survey = Survey.find(1)
 
