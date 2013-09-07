@@ -2,7 +2,7 @@ require 'faker'
 
 
 user = User.create(email: "a@b.com",
-            password: "123")
+            password: "1234")
 
 
 user.surveys.create({title: "Up or Down"})

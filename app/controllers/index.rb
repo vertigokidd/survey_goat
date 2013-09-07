@@ -1,37 +1,61 @@
+enable :sessions
+
 # GET ====================================
 
 get '/' do
   # Look in app/views/index.erb
-  erb :index
+  if current_user
+    redirect "/user/#{session[:user_id]}"
+  else
+    erb :index
+  end
 end
 
 
 get '/create' do
+  if current_user
+    erb :create
+  else
+    @errors = "You must be logged in to do that."
+    erb :index
+  end
+end
 
-  erb :create
+get '/logout' do
+  session.clear
+  erb :index
 end
 
 get '/survey/:survey_id' do
   survey_id = params[:survey_id]
-  @survey = Survey.find(survey_id)
+  @survey = Survey.find_by_url(survey_id)
   @questions = @survey.questions  
-
   erb :survey
 end
 
 
 get '/user/:user_id' do
-  user_id = params[:user_id]
-  @surveys = Survey.where("user_id = #{user_id}")
-  erb :profile
+  if current_user
+    user_id = params[:user_id]
+    @surveys = Survey.where("user_id = #{user_id}")
+    erb :profile
+  else
+    @errors = "You must be logged in to do that."
+    erb :index
+  end
 end
 
 
 get '/user/:user_id/survey/:survey_id' do
-  survey_id = params[:survey_id]
-  @survey = Survey.find(survey_id)
-  @questions = @survey.questions  
-  erb :results
+  if current_user
+    survey_id = params[:survey_id]
+    @survey = Survey.find(survey_id)
+    @questions = @survey.questions  
+    erb :results
+  else
+    @errors = "You must be logged in to do that."
+    erb :index
+  end
 end
 
 
@@ -43,7 +67,8 @@ post '/login' do
   password = params[:password]
   user = User.find_by_email(email)
   if user.password == password
-    redirect '/user/1'
+    session[:user_id] = user.id
+    redirect "/user/#{user.id}"
   else
     @errors = "Username and password do not match."
     erb :index
@@ -53,48 +78,49 @@ end
 post '/signup' do
   email = params[:email]
   password = params[:password]
-  if password != params[:verify_password]
-    @signup_errors = "Password does not match, fool."
+  user = User.create({email: email, password: password})
+  if user.errors == []
+    @signup_errors = "Email " + (user.errors.first)[1]
     erb :index
   else
-  User.create({email: email, password: password})
-  redirect '/'
+    session[:user_id] = user.id
+    redirect "/user/#{user.id}"
   end
 end
 
 # create new survey
 post '/create' do
-  params_hash = params
-  survey_title = params_hash[:survey][:title]
-  # create a new survey
-  survey = Survey.create({title: survey_title})
-  params_hash.delete("survey")
-  # for each question
-  questions_array = params_hash.map { |kv| kv }
-  
-  p questions_array
-    # make a new question for the survey
-  questions_array.each do |question|
+  if current_user
+    params_hash = params
+    survey_title = params_hash[:survey][:title]
+    # create a new survey
+    survey = current_user.surveys.create( { title: survey_title, url: make_url } )
+    params_hash.delete("survey")
+    # for each question
+    questions_array = params_hash.map { |kv| kv }
+    
+    p questions_array
+      # make a new question for the survey
+    questions_array.each do |question|
 
-    question_info = question[1]
-    content =  question_info["content"]
-    new_question = survey.questions.create(content: content)
-    question_info.delete("content")
-    choices_array = question_info.map { |k,v| v }
-    p choices_array
+      question_info = question[1]
+      content =  question_info["content"]
+      new_question = survey.questions.create(content: content)
+      question_info.delete("content")
+      choices_array = question_info.map { |k,v| v }
+      p choices_array
 
-    choices_array.each do |choice|
-      new_question.answers.create(choice: choice)
+      choices_array.each do |choice|
+        new_question.answers.create(choice: choice)
+      end
+
     end
+    redirect "/survey/#{survey.url}"
 
+  else
+    @errors = "You must be logged in to do that."
+    redirect '/'
   end
-
-# SAMPLE PARAMS
-# { "survey" => { title: "Favorite Colors" },
-#   "question_1" => { content: 'Your favorite color?', choice_1: "red", choice_2: "green" },
-#   "question_2" => { content: 'Your favorite kind of music?', choice_1: 'rock', choice_2: 'rap' } }
-
-  redirect '/'
 end
 
 # submit completed survey

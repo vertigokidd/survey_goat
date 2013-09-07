@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   has_many :surveys
   has_many :questions, through: :survey
 
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 4 }
+
   include BCrypt 
 
   def password
