@@ -1,25 +1,34 @@
 <div id="createWrapper">
   <h3>Fill in the input fields to build your survey</h3>
-  <form action="/create" method="POST">
+  <form action="/create" id="createForm"method="POST">
     <input id="create_title" type="text" name="survey[title]" placeholder="Survey Name">
 
-    <div class="questionBox">
-    <span>1.</span>
-    <textarea class="question" rows="3" cols="30" type="text" name="question_1[content]" placeholder="question"></textarea>
-    
+  <ol class="numberedList">
 
-    <input class="choice" type="text" name="question_1[choice_1]" placeholder="choice">
-    <input class="choice" type="text" name="question_1[choice_2]" placeholder="choice">
+  </ol>
 
-    </div>
+
     
     <button id="choice">Add a choice</button>
     <button id="question">Add another question</button>
     
 
-    <input id="complete" type="submit" value="Complete survey">
+    <input id="complete" type="submit" disabled="true" value="Create survey">
   </form>
 
   
 
 </div>
+
+
+    <li class = "questionBox" style="opacity: 0">    
+      
+        <textarea class="question" rows="3" cols="30" type="text" name="question_1[content]" placeholder="question"></textarea>
+        
+    </li>
+      
+        <div>
+        <input class="choice" type="text" name="question_1[choice_1]" placeholder="choice"><span>X</span>
+        </div>
+
+        <div><input class="choice" type="text" name="question_1[choice_2]" placeholder="choice"><span>X</span></div>

@@ -283,10 +283,8 @@ nav h2 {
   position: relative;
 }
 
-#createWrapper .questionBox span{
-  position: absolute;
-  font-size: 1.25em;
-  left: -1.25em;
+#createWrapper .numberedList {
+  list-style: decimal;
 }
 
 #createWrapper #complete{
