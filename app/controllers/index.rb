@@ -28,8 +28,9 @@ end
 
 
 get '/user/:user_id/survey/:survey_id' do
-
-
+  survey_id = params[:survey_id]
+  @survey = Survey.find(survey_id)
+  @questions = @survey.questions  
   erb :results
 end
 
@@ -88,21 +89,10 @@ post '/create' do
 
   end
 
-
-# 1.9.3-p374 :005 > question_hash =_
-#  => {"content"=>"Which one?", "choice_1"=>"Labrador", "choice_2"=>"Doberman"}
-# 1.9.3-p374 :016 > question_hash.delete("content")
-#  => "Which one?"
-# 1.9.3-p374 :018 > question_hash
-#  => {"choice_1"=>"Labrador", "choice_2"=>"Doberman"}
-# 1.9.3-p374 :019 > question_hash.map { |k, v| v }
-#  => ["Labrador", "Doberman"]
-
 # SAMPLE PARAMS
 # { "survey" => { title: "Favorite Colors" },
 #   "question_1" => { content: 'Your favorite color?', choice_1: "red", choice_2: "green" },
 #   "question_2" => { content: 'Your favorite kind of music?', choice_1: 'rock', choice_2: 'rap' } }
-
 
   redirect '/'
 end
