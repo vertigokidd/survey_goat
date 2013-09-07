@@ -1,13 +1,13 @@
 <div id="surveyWrapper">
   <h1><%= @survey.title %></h1>
-  <form action="/create" method="POST">
+  <form action="/submit" method="POST">
     <ol>
       <% @survey.questions.each do |question| %>
       <li>
           <span><%= question.content %></span>
           <ul>
             <% question.answers.each do |answer| %>
-              <li><label><input type="radio" name="<%= question.id %>"><%= answer.choice %></label></li>
+              <li><label><input type="radio" name="<%= answer.id %>" value="<%= answer.choice %>"><%= answer.choice %></label></li>
             <% end %>
           </ul>
       </li>
