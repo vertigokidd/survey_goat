@@ -7,7 +7,7 @@
           <span><%= question.content %></span>
           <ul>
             <% question.answers.each do |answer| %>
-              <li><label><input type="radio" name="<%= answer.id %>" value="<%= answer.choice %>"><%= answer.choice %></label></li>
+              <li><label><input type="radio" name="<%= question.id %>" value="<%= answer.id %>"><%= answer.choice %></label></li>
             <% end %>
           </ul>
       </li>

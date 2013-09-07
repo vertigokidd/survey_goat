@@ -99,8 +99,9 @@ end
 
 # submit completed survey
 post '/submit' do
-  params.each do |k,v|
-    answer = Answer.find(k)
+  p params
+  params.each_value do |v|
+    answer = Answer.find(v)
     answer.results.create
   end
   redirect '/'
