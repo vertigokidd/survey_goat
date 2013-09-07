@@ -3,17 +3,19 @@
   <form action="/create" method="POST">
     <input id="create_title" type="text" name="survey[title]" placeholder="Survey Name">
 
-    <div id="questionBox">
+    <div class="questionBox">
     <span>1.</span>
     <textarea class="question" rows="3" cols="30" type="text" name="question_1[content]" placeholder="question"></textarea>
-    </div>
+    
 
     <input class="choice" type="text" name="question_1[choice_1]" placeholder="choice">
     <input class="choice" type="text" name="question_1[choice_2]" placeholder="choice">
-    
-    <button>Add a choice</button>
-    <button id="question">Add another question</button>
 
+    </div>
+    
+    <button id="choice">Add a choice</button>
+    <button id="question">Add another question</button>
+    
 
     <input id="complete" type="submit" value="Complete survey">
   </form>
