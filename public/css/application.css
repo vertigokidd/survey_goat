@@ -94,9 +94,10 @@ th {
   width: 10em;
 }
 nav {
-  background-color: gray;
+  background-color: beige;
   height: 3em;
   padding: 0 10%;
+  color: #6C5D53;
 }
 
 nav div{
@@ -118,38 +119,58 @@ nav .login {
    padding: .5em;
    font-size: 1.5em;
    text-decoration: none;
-   color: white;
+   color: inherit;
 }
 
 nav h2 {
   display: inline-block;
   font-size: 1.5em;
-  color: white;
   padding: .5em 0;
 }
 
 #hero {
+  width: 100%;
+  color: beige;
+  padding: 1em;
+  position: relative;
   text-align: center;
   height: 200px;
-  background: beige;
+  background: #6C5D53;
 }
 
 #hero h1 {
+  float: left;
+  margin-left: 1em;
+}
 
+#homeWrapper{
+  width: 100%
 }
 
 .column{
+  padding: 1em;
+  background-color: beige;
   width: 49.5%;
-  display: inline-block;
+  /*display: inline-block;*/
   text-align: center;
-  height: 300px;
+  height: 500px;
   float: left;
+  color: #6C5D53;
 }
 
 #signup {
-  border-right: 1px dashed black;
+  position: relative;
+  border-right: 1px dashed #6C5D53;
 }
 
+#signup img{
+  height: 200px;
+  position: absolute;
+  /*float: left;*/
+  bottom: 0;
+  left: 0;
+  /*margin-top: 5%;*/
+}
 .column h2 {
   text-align: center;
   padding: .5em 0;
@@ -258,11 +279,11 @@ nav h2 {
   width: 50%;
 }
 
-#createWrapper #questionBox{
+#createWrapper .questionBox{
   position: relative;
 }
 
-#createWrapper #questionBox span{
+#createWrapper .questionBox span{
   position: absolute;
   font-size: 1.25em;
   left: -1.25em;
@@ -271,6 +292,7 @@ nav h2 {
 #createWrapper #complete{
   /*text-align: right;*/
   float: right;
+  padding: .5em;
   margin-right: 20%;
   margin-top: 4em;
 }
