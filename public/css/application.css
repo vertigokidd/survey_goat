@@ -113,7 +113,7 @@ nav #logo{
   background-repeat: no-repeat;
 }
 
-nav #login {
+nav .login {
    float: right;
    padding: .5em;
    font-size: 1.5em;
@@ -285,6 +285,43 @@ nav h2 {
   width: 50%;
 }
 
+#surveyWrapper {
+  width: 80%;
+  margin: auto;
+}
+
+#surveyWrapper h1 {
+  font-size: 2em;
+  font-weight: 600;
+  padding: .5em;
+  text-align: left;
+}
+
+#surveyWrapper li {
+  margin-left: 2em;
+  font-size: 1.5em;
+}
+
+#surveyWrapper li li{
+  list-style: none;
+  margin-left: 0;
+  line-height: .65em;
+}
+
+#surveyWrapper li label input{
+  margin-right: .5em;
+}
+
+#surveyWrapper li label{
+  font-size: .5em;
+}
+
+#submitSurvey {
+  display: block;
+  margin: auto;
+  padding: .5em 1em;
+  font-size: 1.5em;
+}
 /*#signup {
   width: 50%;
   display: inline-block;

@@ -15,15 +15,18 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Survey Goat</title>
 </head>
 <body>
   <nav>
     <!-- <img src="images/goat.jpg" alt=""> -->
-    <a id = "logo"href="#"></a>
+    <a id = "logo"href="/"></a>
     <h2>Survey Goat</h2>
-    
-    <a id="login" href="">Login</a>
+    <% if current_user %>
+      <a class="login" href="">Logout</a>
+    <% else %>
+      <a class="login" href="">Login</a>
+    <% end %>
   <!-- </div> -->
   </nav>
   <div class="container cf">
