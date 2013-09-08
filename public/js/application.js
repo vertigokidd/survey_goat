@@ -80,12 +80,6 @@ $(document).ready(function() {
   $('#createForm').on('keyup', function() {
     allFilled();
 
-
-    // if(allFilled()) {
-    //   $('#complete').removeAttr("disabled");
-    // } else {
-    //   $('#complete').attr('disabled', 'disabled');
-    // }
   });
 
 

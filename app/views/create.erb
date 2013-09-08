@@ -3,13 +3,12 @@
   <form action="/create" id="createForm"method="POST">
     <input id="create_title" type="text" name="survey[title]" placeholder="Survey Name">
 
-  <ol class="numberedList">
+  <ol id="survey">
 
   </ol>
 
 
     
-    <button id="choice">Add a choice</button>
     <button id="question">Add another question</button>
     
 
@@ -18,17 +17,19 @@
 
   
 
-</div>
+    </div>
 
 
-    <li class = "questionBox" style="opacity: 0">    
+    <li class = "questionBox invisible">    
       
-        <textarea class="question" rows="3" cols="30" type="text" name="question_1[content]" placeholder="question"></textarea>
+        <textarea class="question" rows="3" cols="30" type="text" name="question_3[content]" placeholder="question"></textarea>
+        <button id="choice">Add a choice</button>
         
     </li>
       
-        <div>
-        <input class="choice" type="text" name="question_1[choice_1]" placeholder="choice"><span>X</span>
+        <div class="choice invisible">
+        <input  type="text" name="question_1[choice_1]" placeholder="choice"><span>X</span>
+        <!-- <button id="choice">Add a choice</button> -->
         </div>
-
-        <div><input class="choice" type="text" name="question_1[choice_2]" placeholder="choice"><span>X</span></div>
+<!-- 
+        <div><input class="choice" type="text" name="question_1[choice_2]" placeholder="choice"><span>X</span></div> -->
