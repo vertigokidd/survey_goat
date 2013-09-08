@@ -1,5 +1,3 @@
-var question;
-
 function questionTemplate () {
   question = $(".questionBox").clone();
 }
@@ -9,7 +7,7 @@ function choiceTemplate () {
 }
 
 function Survey (defaultQuestionCount) {
-  console.log(defaultQuestionCount);
+
   this.defaultQuestionCount = defaultQuestionCount;
   this.survey = $('#survey');
   this.button = $('#question');
@@ -17,7 +15,6 @@ function Survey (defaultQuestionCount) {
 
   for (var i = 1; i < defaultQuestionCount + 1; i++) {
     newQuestion = new Question(i);
-    console.log(newQuestion);
     this.survey.append(newQuestion.question);
   };
   
@@ -43,7 +40,7 @@ Survey.prototype.addQuestion = function() {
 Survey.prototype.checkFields = function(first_argument) {
     var allInputs = $("#createForm .questionBox input, #createForm textarea");
     allInputs.push($('#create_title')[0]);
-    console.log(allInputs);
+
     var filled = true;
     $(allInputs).each(function() {
         if($(this).val() == '') filled = false;
@@ -55,7 +52,6 @@ Survey.prototype.checkFields = function(first_argument) {
     else {
       $('#complete').attr('disabled', 'disabled');
     }
-    console.log(filled);
 
 };
 
@@ -87,7 +83,7 @@ Question.prototype.addChoice = function() {
   this.choicesCount++
   choices = this.choicesCount;
   var newChoice = new Choice(this.number, choices)
-  $(this.question).append(newChoice.choice);
+    $(this.question).append(newChoice.choice);
   };
 
 function Choice (questionNumber, choiceNumber) {
@@ -110,25 +106,21 @@ function Choice (questionNumber, choiceNumber) {
 }
 
 
-
-
-
-
 $(document).ready(function() {
 
   questionTemplate();
   choiceTemplate();
 
-  // first = new Question(1);
-
-  // first.question.appendTo('ol')
-
   survey = new Survey(1);
 
-  // Survey.addQuestion(1)
+  totalQuestions = $('#surveyWrapper span').length;
+  $("#surveyWrapper :radio").change(function() {
 
-  // Survey.checkFields();
-
-
+    if ($(':radio:checked').length === totalQuestions) {
+        $('#submitSurvey').removeAttr("disabled");      
+    } else {
+      $('#submitSurvey').attr('disabled', 'disabled');
+    }
+  });
 
 });

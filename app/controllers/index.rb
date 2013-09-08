@@ -53,12 +53,14 @@ get '/user/:user_id/survey/:survey_id' do
     @questions = @survey.questions  
     erb :results
   else
-    @errors = "You must be logged in to do that."
+    @errors = "You must be logged in to view these survey results."
     erb :index
   end
 end
 
-
+get '/survey/:survey_url/success' do
+  erb :success
+end
 
 # POST ====================================
 
@@ -118,19 +120,19 @@ post '/create' do
     redirect "/survey/#{survey.url}"
 
   else
-    @errors = "You must be logged in to do that."
-    redirect '/'
+    redirect "/"
   end
 end
 
 # submit completed survey
 post '/submit' do
-  p params
+  survey_id = Question.find(params.first[1]).survey_id
+  survey = Survey.find(survey_id)
   params.each_value do |v|
     answer = Answer.find(v)
     answer.results.create
   end
-  redirect '/'
+  redirect "/survey/#{survey.url}/success"
 end
 
 
