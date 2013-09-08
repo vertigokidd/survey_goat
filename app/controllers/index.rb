@@ -93,12 +93,22 @@ end
 # create new survey
 post '/create' do
   if current_user
+    p params
     params_hash = params
     survey_title = params_hash[:survey][:title]
     # create a new survey
-    survey = current_user.surveys.create( { title: survey_title, url: make_url } )
+    survey = current_user.surveys.create( { title: survey_title, 
+                                            url: make_url,
+                                            file: params[:image] } )
     params_hash.delete("survey")
-    # for each question
+    params_hash.delete("image")
+
+    # DO STUFF WITH PHOTO HERE
+
+
+    # THEN DELETE PHOTO FROM HASH????
+
+
     questions_array = params_hash.map { |kv| kv }
     
     p questions_array

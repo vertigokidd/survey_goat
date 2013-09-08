@@ -10,6 +10,7 @@ class CreateTables < ActiveRecord::Migration
       t.belongs_to :user
       t.string  :title
       t.string  :url
+      t.string :file
       t.timestamps
     end
 
