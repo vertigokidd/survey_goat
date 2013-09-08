@@ -60,6 +60,7 @@ function Question (number) {
   this.question = question.clone();
   this.button = $(this.question).find('button');
   this.choicesCount = 2;
+  this.remove = $(this.question).children('span');
 
   $(this.question).children('textarea').attr('name','question_'+ this.number+"[content]");
 
@@ -76,6 +77,14 @@ function Question (number) {
     event.preventDefault();
     self.addChoice();
   });
+
+  this.remove.click(function(event) {
+    $(self.question).remove();
+  });
+
+  if (this.number <= 1) {
+    $(this.question).children('span').remove();
+  };  
 
 }
 
