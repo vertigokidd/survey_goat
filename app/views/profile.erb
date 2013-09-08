@@ -1,1 +1,5 @@
+<% if session[:success] %>
+  <h2>Thanks for completing the survey!</h2>
+<% end %>
+<% session[:success] = false %>
 <%= erb :_surveysList %>

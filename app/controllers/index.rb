@@ -133,8 +133,8 @@ post '/submit' do
   survey_id = Question.find(params.first[0]).survey_id
   @survey = Survey.find(survey_id)
   if current_user
-    redirect "/user/#{session[:user_id]}"
     session[:success] = true
+    redirect "/user/#{session[:user_id]}"
   end
   redirect "/survey/#{@survey.url}/success"
 end

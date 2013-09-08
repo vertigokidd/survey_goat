@@ -1,7 +1,3 @@
 <h2>Thanks for completing the survey!</h2>
-<% if current_user %>
-  <% erb :_surveysList %>
-<% else %>
-  <p>Wasn't that fun?! Now try making your own...</p>
-  <%= erb :_loginForms %>
-<% end %>
+<p>Wasn't that fun?! Now try making your own...</p>
+<%= erb :_loginForms %>
