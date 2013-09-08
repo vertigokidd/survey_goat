@@ -81,7 +81,7 @@ post '/signup' do
   email = params[:email]
   password = params[:password]
   user = User.create({email: email, password: password})
-  if user.errors == []
+  if user.errors != []
     @signup_errors = "Email " + (user.errors.first)[1]
     erb :index
   else
