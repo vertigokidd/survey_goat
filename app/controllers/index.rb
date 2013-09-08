@@ -96,18 +96,20 @@ post '/create' do
     p params
     params_hash = params
     survey_title = params_hash[:survey][:title]
+    url_key = make_url
+
+    photo_filename = params[:image][:filename]
+    extension = photo_filename.match(/\..{3,4}/)[0]
+
+    params[:image][:filename] = "#{url_key}" + extension
+
+
     # create a new survey
     survey = current_user.surveys.create( { title: survey_title, 
-                                            url: make_url,
+                                            url: url_key,
                                             file: params[:image] } )
     params_hash.delete("survey")
     params_hash.delete("image")
-
-    # DO STUFF WITH PHOTO HERE
-
-
-    # THEN DELETE PHOTO FROM HASH????
-
 
     questions_array = params_hash.map { |kv| kv }
     
