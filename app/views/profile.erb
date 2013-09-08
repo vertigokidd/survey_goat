@@ -1,24 +1,5 @@
-<h3 id = "profile">Active surveys</h3>
-
-<div class ="tableWrapper">
-  <table id="surveys_list">
-    <thead>
-      <th>Title</th>
-      <th>Created on</th>
-      <th>Responses</th>
-      <th>Results</th>
-    </thead>
-    <tbody>
-    <% @surveys.each do |survey| %>
-      <tr>
-        <td><%= survey.title %></td>
-        <td><%= survey.formatted_date %></td>
-        <td><%= survey.responses %></td>
-        <td><a href="/user/<%= survey.user_id %>/survey/<%= survey.id %>">Link</a></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
-
-<a id="createSurvey" href="/create">Create survey</a>
+<% if session[:success] %>
+  <h2>Thanks for completing the survey!</h2>
+<% end %>
+<% session[:success] = false %>
+<%= erb :_surveysList %>
