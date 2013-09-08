@@ -126,13 +126,13 @@ end
 
 # submit completed survey
 post '/submit' do
-  survey_id = Question.find(params.first[1]).survey_id
-  survey = Survey.find(survey_id)
   params.each_value do |v|
     answer = Answer.find(v)
     answer.results.create
   end
-  redirect "/survey/#{survey.url}/success"
+  survey_id = Question.find(params.first[0]).survey_id
+  @survey = Survey.find(survey_id)
+  redirect "/survey/#{@survey.url}/success"
 end
 
 
