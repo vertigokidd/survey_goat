@@ -249,6 +249,7 @@ nav h2 {
 .invisible{
   opacity: 0;
   position: absolute;
+  z-index: -100;
 }
 
 #createWrapper h3 {
@@ -289,6 +290,13 @@ nav h2 {
   position: relative;
 }
 
+#createWrapper .questionBox .removeQuestion {
+  position: absolute;
+  top:0;
+  left: 82.5%;
+  cursor: pointer;
+}
+
 #createWrapper .numberedList {
   list-style: decimal;
 }
@@ -309,9 +317,9 @@ nav h2 {
   position: relative;
 }
 
-.choice span {
+#createWrapper .choice .removeChoice {
   position: absolute;
-  left: 390px;
+  left: 104%;
   top: .4em;
   cursor: pointer;
 }
