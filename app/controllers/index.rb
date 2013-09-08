@@ -117,7 +117,7 @@ post '/create' do
       end
 
     end
-    redirect "/survey/#{survey.url}"
+    redirect "/user/#{session[:user_id]}"
 
   else
     redirect "/"
@@ -132,6 +132,10 @@ post '/submit' do
   end
   survey_id = Question.find(params.first[0]).survey_id
   @survey = Survey.find(survey_id)
+  if current_user
+    session[:success] = true
+    redirect "/user/#{session[:user_id]}"
+  end
   redirect "/survey/#{@survey.url}/success"
 end
 

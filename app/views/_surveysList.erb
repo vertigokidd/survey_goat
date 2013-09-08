@@ -1,0 +1,30 @@
+<h3 id = "profile">Active surveys</h3>
+
+<div class ="tableWrapper">
+  <table id="surveys_list">
+    <thead>
+      <th>Title</th>
+      <th>Created on</th>
+      <th>Responses</th>
+      <th>Results</th>
+      <th>Survey URL</th>
+    </thead>
+    <tbody>
+    <% @surveys.each do |survey| %>
+      <tr>
+        <td><%= survey.title %></td>
+        <td><%= survey.formatted_date %></td>
+        <td><%= survey.responses %></td>
+        <% if survey.responses == 0 %>
+          <td>No responses</td>
+        <% else %>
+          <td><a href="/user/<%= survey.user_id %>/survey/<%= survey.id %>">Link</a></td>
+        <% end %>
+        <td><a href="/survey/<%= survey.url %>">localhost:9393/survey/<%= survey.url %></a></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<a id="createSurvey" href="/create">Create survey</a>
