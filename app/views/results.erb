@@ -1,32 +1,40 @@
 <div id="resultsWrapper">
-  <h2>Survey Title</h2>
-  <p>Total responses: 24</p>
+  <h2><%= @survey.title %></h2>
+  <p>Total responses: <%= @survey.responses %></p>
 
   <div class ="tableWrapper">
 
     <ol>
       <div>
-    <li><span>What is your gender?</span></li>
-    <table id="surveys_list">
-      <tbody>
-        <tr>
-          <th>Choices</th>
-          <td>Male</td>
-          <td>Female</td>
-        </tr>
-          <tr>
-         <th>Answers</th>
-         <td>50%</td>
-          <td>50%</td>
-        </tr>
-          <tr>
-          <th>Totals</th>
-          <td>12</td>
-          <td>12</td>
-        </tr>
-      </tbody>
-    </table>
+      <% @questions.each do |question| %>
+      <li><span><%= question.content %></span></li>
+        <table id="surveys_list">
+          <tbody>
+            <tr>
+              <th>Choices</th>
+               <% question.answers.each do |answer| %>
+                 <td><%= answer.choice %></td>
+               <% end %>
+            </tr>
+            <tr>
+              <th>Answers</th>
+                <% question.answers.each do |answer| %>
+                  <td><%= answer.find_percentage %> %</td>
+                <% end %>
+            </tr>
+            <tr>
+              <th>Totals</th>
+              <% question.answers.each do |answer| %>
+                <td><%= answer.find_total %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <% end %>
     </div>
   </ol>
+
   </div>
+
 </div>
