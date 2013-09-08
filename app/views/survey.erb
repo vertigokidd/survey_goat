@@ -1,5 +1,6 @@
 <div id="surveyWrapper">
   <h1><%= @survey.title %></h1>
+  <img src="<%= @survey.file %>">
   <form action="/submit" method="POST">
     <ol>
       <% @survey.questions.each do |question| %>
