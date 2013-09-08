@@ -1,0 +1,31 @@
+<div id="homeWrapper" class="cf">
+  <div id="signup" class="column">
+    <h2>Sign up</h2>
+    <form action="/signup" method="POST">
+       <p></p>
+       <% if @signup_errors %>
+         <p class="error"><%= @signup_errors %></p>
+       <% end %>
+       <label>Email: <input type="text" name="email"></label>
+       <label>Password: <input type="password" name="password"></label>
+       <label>Confirm password: <input type="password" name="verify_password"></label>
+       <br>
+       <input type="submit" value="Create account" disabled="true">
+    </form>
+    <img src="images/goat.jpg">
+
+  </div>
+
+  <div id="login" class="column">
+    <h2>Log in</h2>
+      <form action="/login" method="POST">
+        <% if @errors %>
+          <p class="error"><%= @errors %></p>
+         <% end %>
+      <label>Email: <input type="text" name="email"></input></label>
+      <label>Password: <input type="password" name="password"></label>
+      <br>
+      <input type="submit" value="Log in">
+    </form>
+  </div>
+</div>

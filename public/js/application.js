@@ -1,7 +1,6 @@
 var questionCounter = 2
 var question;
 
-
 function addNewQuestion() {  
   questionClone = question.clone();
 
@@ -9,9 +8,6 @@ function addNewQuestion() {
   $(questionClone).children('textarea').attr('name','question_'+ questionCounter+"[content]");
   $(questionClone).children('input:first').attr('name', 'question_'+ questionCounter+'[choice_1]');
   $(questionClone).children('input:last').attr('name', 'question_'+ questionCounter+'[choice_2]');
-  // $(questionClone).children('.questionBox:nth-child(4)').attr('name', 'question_'+ questionCounter+'[choice_2]');
-
-  // $(questionClone).insertBefore("#choice");
 
   console.log(question);
 
@@ -63,47 +59,30 @@ function allFilled() {
 }
 
 
-// function enableFormWhenComplete () {
-//     var allInputs = $(":input");
-//     $(allInputs).each(function() {
-//        if($(this).val() === "")
-//         complete = false;
-//     });
-// }
-
 $(document).ready(function() {
 
-  questionTemplate();
+  // questionTemplate();
 
-  choiceTemplate()
+  // choiceTemplate()
 
-  $('#createForm').on('keyup', function() {
-    allFilled();
+  // $('#createForm').on('keyup', function() {
+  //   allFilled();
 
+  // });
 
-    // if(allFilled()) {
-    //   $('#complete').removeAttr("disabled");
-    // } else {
-    //   $('#complete').attr('disabled', 'disabled');
-    // }
-  });
+  // $('#question').on('click', function(event) {
+  //   event.preventDefault();
 
+  //   addNewQuestion();
 
+  //   questionCounter++;
+  // });
 
-  $('#question').on('click', function(event) {
-    event.preventDefault();
+  // $('#choice').on('click', function(event){
+  //   event.preventDefault();
 
-    addNewQuestion();
+  //   addNewChoice();
 
-    questionCounter++;
-  });
-
-
-  $('#choice').on('click', function(event){
-    event.preventDefault();
-
-    addNewChoice();
-
-  });
+  // });
 
 });
