@@ -2,10 +2,11 @@
   <div id="signup" class="column">
     <h2>Sign up</h2>
     <form action="/signup" method="POST">
-       <p></p>
-       <% if @signup_errors %>
-         <p class="error"><%= @signup_errors %></p>
-       <% end %>
+       <div class="signup-errors">
+         <% if @signup_errors %>
+           <p class="error"><%= @signup_errors %></p>
+         <% end %>
+       </div>
        <label>Email: <input type="text" name="email"></label>
        <label>Password: <input type="password" name="password"></label>
        <label>Confirm password: <input type="password" name="verify_password"></label>
