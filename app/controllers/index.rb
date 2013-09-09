@@ -99,7 +99,7 @@ post '/create' do
     url_key = make_url
 
     photo_filename = params[:image][:filename]
-    extension = photo_filename.match(/\..{3,4}/)[0]
+    extension = photo_filename.match(/\..{3,4}\z/)[0]
 
     params[:image][:filename] = "#{url_key}" + extension
 
