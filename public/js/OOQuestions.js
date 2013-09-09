@@ -132,4 +132,7 @@ $(document).ready(function() {
     }
   });
 
+  $('#signup img').addClass('enter');
+
+
 });
