@@ -1,7 +1,9 @@
 <div id="createWrapper">
   <h3>Fill in the input fields to build your survey.</h3>
-  <form action="/create" id="createForm"method="POST">
+  <form action="/create" id="createForm" method="POST" enctype="multipart/form-data">
     <input id="create_title" type="text" name="survey[title]" placeholder="Survey Name">
+    <label>Upload a photo for your survey:<input type="file" name="image" id="file"></label>
+    <br>
 
   <ol id="survey">
 
