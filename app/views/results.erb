@@ -5,9 +5,10 @@
   <div class ="tableWrapper">
 
     <ol>
-      <div>
       <% @questions.each do |question| %>
-      <li><span><%= question.content %></span></li>
+      <div>
+      
+      <li><span><%= question.content %></span>
         <table id="surveys_list">
           <tbody>
             <tr>
@@ -22,7 +23,7 @@
                   <td><%= answer.find_percentage %> %</td>
                 <% end %>
             </tr>
-            <tr>
+            <tr class="totals">
               <th>Totals</th>
               <% question.answers.each do |answer| %>
                 <td><%= answer.find_total %></td>
@@ -30,9 +31,33 @@
             </tr>
           </tbody>
         </table>
+
+        <table class="graph">
+          <tr>
+              <td><canvas id=""></canvas></td>
+              <td><ul id = "legend">
+                  <li>LEGEND</li>
+                <% question.answers.each do |answer| %>
+                  <li><%= answer.choice %></li>
+                <% end %> 
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+<!--         <div class="charts cf">
+          <ul id = "legend">
+              <li>LEGEND</li>
+            <% question.answers.each do |answer| %>
+              <li><%= answer.choice %></li>
+            <% end %> 
+          </ul>
+          <canvas id=""></canvas>
+        </div> -->
+        </div>
+
       </li>
       <% end %>
-    </div>
   </ol>
 
   </div>
