@@ -81,7 +81,7 @@ post '/signup' do
   email = params[:email]
   password = params[:password]
   user = User.create({email: email, password: password})
-  if user.errors != []
+  if !user.errors.empty?
     @signup_errors = "Email " + (user.errors.first)[1]
     erb :index
   else
@@ -148,7 +148,7 @@ post '/submit' do
     session[:success] = true
     redirect "/user/#{session[:user_id]}"
   end
-  redirect "/survey/#{@survey.url}/success"
+  redirect "/"
 end
 
 
